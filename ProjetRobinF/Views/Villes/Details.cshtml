@@ -1,0 +1,88 @@
+﻿
+@model ProjetRobinF.Models.Ville
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ville</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hotels)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Hotel</th>
+                    <th>Etoile</th>
+                    <th>Prix</th>
+                </tr>
+                @foreach (var item in Model.Hotels)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Etoile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Prix)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Activite)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Nom activite</th>
+                    <th>Adresse</th>
+                    <th>Description</th>
+                </tr>
+                @foreach (var item in Model.Activite)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Addresse)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
