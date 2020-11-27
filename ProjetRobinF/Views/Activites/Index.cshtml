@@ -1,47 +1,55 @@
-﻿@model IEnumerable<ProjetRobinF.Models.Activite>
-
+﻿@model PagedList.IPagedList<ProjetRobinF.Models.Activite>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Acivites";
 }
 
-<h2>Activite</h2>
+<h2>Activites</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("Index", "Activite", FormMethod.Get))
+{
+    <p>
+        Recherche par le nom: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
-    
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.ActionLink("Nom Activites", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Addresse)
+           Adresse
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Addresse)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_A }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_A }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_A })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Addresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID_A })
+            </td>
+        </tr>
+    }
 
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

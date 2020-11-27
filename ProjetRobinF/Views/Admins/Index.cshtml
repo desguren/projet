@@ -6,13 +6,12 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
-                Wellcome
+                Bienvenue
             </div>
             <div class="card-body">
                 @if (Session["Pseudo"] != null)
                 {
-                    <p>Name: @Session["Pseudo"].ToString()</p>
-                    <a href="@Url.Action("Logout","Admins")" class="btn btn-warning">Logout</a>
+                    <p>Nom: @Session["Pseudo"].ToString()</p>
                 }
             </div>
         </div>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjetRobinF.Models;
 using ProjetRobinF.dal;
+using PagedList;
 
 namespace ProjetRobinF.Controllers
 {
@@ -16,11 +17,51 @@ namespace ProjetRobinF.Controllers
         private ProjetContext db = new ProjetContext();
 
         // GET: Hotels
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var hotels = db.Hotels.Include(h => h.Ville);
-            return View(hotels.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.EtoileSortParm = String.IsNullOrEmpty(sortOrder) ? "etoile" : "";
+            ViewBag.PrixSortParm = String.IsNullOrEmpty(sortOrder) ? "prix" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var hotels = from s in db.Hotels
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                hotels = hotels.Where(s => s.Nom.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    hotels = hotels.OrderByDescending(s => s.Nom);
+                    break;
+                case "etoile":
+                    hotels = hotels.OrderBy(s => s.Etoile);
+                    break;
+                case "prix":
+                    hotels = hotels.OrderBy(s => s.Prix);
+                    break;
+                default:
+                    hotels = hotels.OrderBy(s => s.Nom);
+                    break;
+            }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(hotels.ToPagedList(pageNumber, pageSize));
+
+
         }
+    
 
         // GET: Hotels/Details/5
         public ActionResult Details(int? id)

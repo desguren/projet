@@ -14,7 +14,7 @@ namespace ProjetRobinF.Controllers
 
         public ActionResult Index()
         {
-            if (Session["idUser"] != null)
+            if (Session["idAdmin"] != null)
             {
                 return View();
             }
@@ -24,7 +24,6 @@ namespace ProjetRobinF.Controllers
             }
         }
 
-  
         public ActionResult Login()
         {
             return View();

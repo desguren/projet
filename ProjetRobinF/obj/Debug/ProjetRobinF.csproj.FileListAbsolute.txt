@@ -88,3 +88,7 @@ C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\obj\Debug\P
 C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\obj\Debug\ProjetRobinF.dll
 C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\obj\Debug\ProjetRobinF.pdb
 C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\obj\Debug\ProjetRobinF.csprojAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\bin\PagedList.dll
+C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\bin\PagedList.Mvc.dll
+C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\bin\PagedList.xml
+C:\Users\User\Documents\Visual Studio 2019\ProjetRobinF\ProjetRobinF\bin\PagedList.Mvc.xml

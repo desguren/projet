@@ -1,39 +1,49 @@
-﻿@model IEnumerable<ProjetRobinF.Models.Ville>
-
+﻿@model PagedList.IPagedList<ProjetRobinF.Models.Ville>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Ville";
+    ViewBag.Title = "Villes";
 }
 
 <h2>Ville</h2>
 
-<p>
-    @Html.ActionLink("Ajouter une ville", "Create")
-</p>
+@using (Html.BeginForm("Index", "Ville", FormMethod.Get))
+{
+    <p>
+        Recherche par le nom: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.ActionLink("Nom Ville", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Region)
+            @Html.ActionLink("Region", "Index", new { sortOrder = ViewBag.RegionSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Region)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

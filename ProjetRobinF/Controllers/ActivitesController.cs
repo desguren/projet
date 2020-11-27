@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjetRobinF.Models;
 using ProjetRobinF.dal;
+using PagedList;
 
 namespace ProjetRobinF.Controllers
 {
@@ -16,11 +17,43 @@ namespace ProjetRobinF.Controllers
         private ProjetContext db = new ProjetContext();
 
         // GET: Activites
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var activites = db.Activites.Include(a => a.Ville);
-            return View(activites.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var activites= from s in db.Activites
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                activites = activites.Where(s => s.Nom.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    activites = activites.OrderByDescending(s => s.Nom);
+                    break;
+                default:
+                    activites = activites.OrderBy(s => s.Nom);
+                    break;
+            }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(activites.ToPagedList(pageNumber, pageSize));
+
+
         }
+
 
         // GET: Activites/Details/5
         public ActionResult Details(int? id)
