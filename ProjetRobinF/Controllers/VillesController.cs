@@ -38,6 +38,7 @@ namespace ProjetRobinF.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 villes = villes.Where(s => s.Nom.Contains(searchString));
+                
             }
             switch (sortOrder) 
             {
@@ -104,7 +105,7 @@ namespace ProjetRobinF.Controllers
             Ville ville = db.Villes.Find(id);
             if (ville == null)
             {
-                return HttpNotFound();
+                return HttpNotFound(); 
             }
             return View(ville);
         }

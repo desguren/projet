@@ -44,11 +44,11 @@ namespace ProjetRobinF.Controllers
 
                     Session["Pseudo"] = data.Pseudo;
                     Session["idAdmin"] = data.idAdmin;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
-                    ViewBag.error = "Login failed";
+                    ViewBag.Error = "Login failed";
                     return RedirectToAction("Login");
                 }
             }

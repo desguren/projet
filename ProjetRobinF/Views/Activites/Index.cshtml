@@ -44,6 +44,12 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.ID_A })
+                @if (Session["Pseudo"] != null)
+                {
+                    @Html.ActionLink("Modifier ", "Edit", new { id = item.ID_A })
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_A })
+                }
+
             </td>
         </tr>
     }

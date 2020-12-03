@@ -24,7 +24,7 @@
             @Html.ActionLink("Etoile", "Index", new { sortOrder = ViewBag.EtoileSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Prix", "Index", new { sortOrder = ViewBag.PrixSortParm, currentFilter = ViewBag.CurrentFilter })
+           Prix
         </th>
         <th></th>
     </tr>
@@ -45,6 +45,11 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.ID_H })
+                @if (Session["Pseudo"] != null)
+                {
+                    @Html.ActionLink("Modifier ", "Edit", new { id = item.ID_H })
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.ID_H })
+                }
 
             </td>
         </tr>

@@ -23,7 +23,7 @@
         <th>
             @Html.ActionLink("Region", "Index", new { sortOrder = ViewBag.RegionSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
-        <th></th>
+        <th>Code Postal</th>
     </tr>
 
     @foreach (var item in Model)
@@ -36,7 +36,15 @@
                 @Html.DisplayFor(modelItem => item.Region)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
                 @Html.ActionLink("Details", "Details", new { id = item.ID })
+                @if (Session["Pseudo"] != null)
+                {
+                    @Html.ActionLink("Modifier ", "Edit", new { id = item.ID })
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.ID })
+                }
             </td>
         </tr>
     }

@@ -7,6 +7,13 @@
     <title>@ViewBag.Title -Travel Japan</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script>
+        function getValue() {
+
+            alert("Deconnexion réussi");
+        }
+
+    </script>
 
 
 </head>
@@ -30,8 +37,6 @@
                     <ul class="sub-menu collapse" id="ville">
                         <li> @Html.ActionLink("Ville", "Index", "Villes")</li>
                         <li> @Html.ActionLink("Ajouter une ville", "Create", "Villes")</li>
-                        <li> @Html.ActionLink("Modifier une ville", "Edit", "Villes")</li>
-                        <li> @Html.ActionLink("Supprimer une ville", "Delete", "Villes")</li>
                     </ul>
                 }
                 else
@@ -49,8 +54,6 @@
                     <ul class="sub-menu collapse" id="hotel">
                         <li> @Html.ActionLink("Hotel", "Index", "Hotels")</li>
                         <li> @Html.ActionLink("Ajouter un hotel", "Create", "Hotels")</li>
-                        <li> @Html.ActionLink("Modifier un hotel", "Edit", "Hotels")</li>
-                        <li> @Html.ActionLink("Supprimer un hotel", "Delete", "Hotels")</li>
                     </ul>
                 }
                 else
@@ -68,8 +71,6 @@
                     <ul class="sub-menu collapse" id="activite">
                         <li> @Html.ActionLink("Activite", "Index", "Activites")</li>
                         <li> @Html.ActionLink("Ajouter une activite", "Create", "Activites")</li>
-                        <li> @Html.ActionLink("Modifier une activites", "Edit", "Activites")</li>
-                        <li> @Html.ActionLink("Supprimer une activites", "Delete", "Activites")</li>
                     </ul>
                 }
                 else
@@ -86,7 +87,7 @@
                     <li>@Html.ActionLink("Connexion", "Login", "Admins")</li>
                     @if (Session["Pseudo"] != null)
                     {
-                        <li><a href="@Url.Action("Logout","Admins")">Deconnexion</a></li>
+                        <li><a href="@Url.Action("Logout","Admins")" onclick = "getValue();">Deconnexion</a></li>
                     }
 
                 </ul>
