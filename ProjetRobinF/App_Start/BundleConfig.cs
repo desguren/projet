@@ -27,6 +27,9 @@ namespace ProjetRobinF
                       "~/Content/style.css",
                       "~/Content/login.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content2/css").Include(
+                      "~/Content/home.css"));
         }
     }
 }
