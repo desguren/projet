@@ -37,7 +37,7 @@ namespace ProjetRobinF.Controllers
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                villes = villes.Where(s => s.Nom.Contains(searchString));
+                villes = villes.Where(s => s.Nom.Contains(searchString)|| s.Region.Contains(searchString));
             
             }
             switch (sortOrder) 

@@ -7,7 +7,7 @@
 
 <h2>Hotel</h2>
 
-@using (Html.BeginForm("Index", "Hotel", FormMethod.Get))
+@using (Html.BeginForm("Index", "Hotels", FormMethod.Get))
 {
     <p>
         Recherche par le nom: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)

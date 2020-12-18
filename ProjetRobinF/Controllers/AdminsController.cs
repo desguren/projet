@@ -27,6 +27,7 @@ namespace ProjetRobinF.Controllers
         public ActionResult Login()
         {
             ViewBag.error = TempData["erreur"];
+          
             return View();
         }
 
@@ -45,13 +46,13 @@ namespace ProjetRobinF.Controllers
 
                     Session["Pseudo"] = data.Pseudo;
                     Session["idAdmin"] = data.idAdmin;
-                    ViewBag.ok = "connexion réussi";
-
+                
+                  
                     return RedirectToAction("Index","Home");
                 }
                 else
                 {
-                    TempData["erreur"]="Login failed";
+                    TempData["erreur"]="Erreur, login ou mot de passe incorect";
                  
                     return RedirectToAction("Login");
                 }

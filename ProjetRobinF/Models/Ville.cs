@@ -1,9 +1,8 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
+using System.Drawing;
 
 namespace ProjetRobinF.Models
 {
@@ -16,5 +15,7 @@ namespace ProjetRobinF.Models
         public string Region { get; set; }
         public virtual ICollection<Hotel> Hotels { get; set; }
         public virtual ICollection<Activite> Activite { get; set; }
+
+     
     }
 }

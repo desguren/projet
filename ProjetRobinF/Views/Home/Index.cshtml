@@ -3,19 +3,17 @@
 }
 
 @Styles.Render("~/Content2/css")
-
-<header class="homeh">
-
-    <img src="/Content/Images/Image1.jpg" /><br />
-    <h1>Travel Japan</h1>
+<h1>Travel Japan</h1>
 
 
-</header>
-<body class="homeb">
+
+
+<body>
 
     <p>Le site pour trouver les meilleures activités et les meilleures hotels pour votre séjour au Japon </p>
 
     <p>Vous trouverez ici les informations détaillé sur les différentes activité et hotel en fonction des villes</p>
+
 
 
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -26,21 +24,30 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="/Content/Images/nagoya.jpg" class="d-block w-100" alt="...">
+                <a href=" @Url.Action("Details","Villes",new { id ="604-851"})">
+                    <img src="/Content/Images/nagoya.jpg" class="d-block w-100" alt="...">
+                </a>
+
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Nagoya</h5>
 
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/Content/Images/tokyo.jpg" class="d-block w-100" alt="...">
+                <a href=" @Url.Action("Details","Villes",new {id ="100-000"})">
+                    <img src="/Content/Images/tokyo.jpg" class="d-block w-100" alt="...">
+                </a>
+
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Tokyo</h5>
 
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="/Content/Images/osaka.jpg" class="d-block w-100" alt="...">
+                <a href=" @Url.Action("Details","Villes",new {id ="530-8201"})">
+                    <img src="/Content/Images/osaka.jpg" class="d-block w-100" alt="...">
+                </a>
+
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Osaka</h5>
                 </div>
@@ -55,4 +62,45 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+
+    <div class="container marketing">
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Château d'Osaka</h2>
+                <p class="lead">Le château d'Osaka (大坂城 / 大阪城, Ōsaka-jō) est un des châteaux les plus célèbres du Japon. Il a joué un rôle majeur durant l'unification du Japon au xvie siècle au cours de l'une des dernières grandes révoltes contre les Tokugawa, réprimée lors des sièges d'Osaka en 1614 et 1615.</p>
+            </div>
+            <div class="col-md-5">
+                <img src="/Content/Images/chateau.jpeg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#eee" />
+
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Aquarium Kaiyukan</h2>
+                <p class="lead">L'aquarium Kaiyukan (海遊館 (かいゆうかん) est un aquarium situé dans l'arrondissement de Minato à Ōsaka, au Japon. On peut notamment y voir deux requins baleines3, deux poissons-lunes, des raies, des loutres de mer, des manchots royaux, des tortues de mer, différentes espèces de méduses, ainsi que des crabes-araignées géants.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="/Content/Images/aquarium.jpeg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#eee" />
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Sanctuaire Asakusa</h2>
+                <p class="lead">Le Sensō-ji (金龍山浅草寺, Kinryū-zan Sensō-ji) est un temple bouddhiste situé à Tokyo, dans le quartier d'Asakusa (arrondissement de Taitō). C'est le plus vieux temple de la capitale japonaise ; il est dédié à la déesse bodhisattva Kannon.</p>
+            </div>
+            <div class="col-md-5">
+                <img src="/Content/Images/asakusa.jpeg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#eee" />
+            </div>
+        </div>
+
 </body>

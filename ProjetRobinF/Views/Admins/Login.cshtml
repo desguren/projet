@@ -4,24 +4,26 @@
     String error = ViewBag.Error;
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int berror = 0;
+
+    if (@ViewBag.error != null && @ViewBag.error.Length > 0)
+    {
+        berror = 1;
+    }
 }
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
 <script>
+   
+    if (@berror== "1") {
 
- 
-    if (@ViewBag.error!=null && @ViewBag.error.Length>0 ) {
-
-        alert(error)
-    }
-
+        alert("@error")
+      
+    } 
 </script>
 
     
-
-
-
 <div class="container">
     <section id="content">
         <div class="card">
